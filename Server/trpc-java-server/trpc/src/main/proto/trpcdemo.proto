@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package trpc.test.helloworld;
+//option go_package="./proto";
+option java_package = "com.jackie.trpc.service";  // 设定桩代码文件的java package
+option java_outer_classname = "TrpcDemo";
+service DataService {
+  rpc ProcessData (ProcessDataRequest) returns (mydata);
+}
+
+message mydata {
+  string code = 1;
+  map<int32, NodeState> node_state = 2;
+  string work_state = 3;
+  string zone = 4;
+
+  message NodeState {
+    int32 node_id = 1;
+    bool has_container = 2;
+    string container_code = 3;
+    int64 last_read_time = 4;
+    int64 last_report_time = 5;
+    int64 last_leave_success_time = 6;
+    int64 last_has_container_time = 7;
+    ConveyorContainerAttribute container_attribute = 8;
+    string container_task = 9;
+    string group_code = 10;
+
+    message ConveyorContainerAttribute {
+      int64 height = 1;
+      int64 length = 2;
+      int64 width = 3;
+      int64 weight = 4;
+      int64 material = 5;
+      string orientation = 6;
+      string sku_info = 7;
+      string abnormal_reason = 8;
+      string group_abnormal_reason = 9;
+      string qrcode = 10;
+      int64 abnormal_code = 11;
+    }
+  }
+}
+
+message ProcessDataRequest {
+  string redis_key  = 1;
+}

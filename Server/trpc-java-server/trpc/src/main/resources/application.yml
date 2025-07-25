@@ -1,0 +1,36 @@
+server:
+  port: ${SERVER_PORT:9003}  # 默认值9003，可通过环境变量SERVER_PORT覆盖
+spring:
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    database: 0  
+    timeout: 5000ms
+  application:
+    name: equipment.DataService
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        register: true
+        service-name: equipment.DataService
+        prefer-ip-address: true
+        ip-address: ${SERVICE_IP:127.0.0.1}
+        healthCheckInterval: 10s
+        port: ${SERVICE_PORT:9004}
+        health-check-critical: remove
+        health-check-passing: true
+        heartbeat:
+          enabled: true
+trpc:
+  server: 
+    app: TestApp 
+    server: TestServer 
+    local_ip: ${SERVICE_IP:127.0.0.1}
+    service: 
+      - name: equipment.DataService
+        impls:
+          - com.jackie.trpc.service.impl.DataServiceAPIImpl
+        ip: ${SERVICE_IP:127.0.0.1}
+        port: ${SERVICE_PORT:9004}

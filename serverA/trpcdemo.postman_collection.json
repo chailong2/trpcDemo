@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "77074355-02fe-4535-8430-8f6eab9be7af",
+		"name": "trpcdemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21009624"
+	},
+	"item": [
+		{
+			"name": "porcess",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"200\",\r\n  \"node_state\": {\r\n    \"1\": {\r\n      \"node_id\": 1,\r\n      \"has_container\": true,\r\n      \"container_code\": \"C123\",\r\n      \"last_read_time\": 1627000000,\r\n      \"last_report_time\": 1627000100,\r\n      \"last_leave_success_time\": 1627000200,\r\n      \"last_has_container_time\": 1627000300,\r\n      \"container_attribute\": {\r\n        \"height\": 100,\r\n        \"length\": 200,\r\n        \"width\": 50,\r\n        \"weight\": 30,\r\n        \"material\": 1,\r\n        \"orientation\": \"N\",\r\n        \"sku_info\": \"SKU123\",\r\n        \"abnormal_reason\": \"\",\r\n        \"group_abnormal_reason\": \"\",\r\n        \"qrcode\": \"QR123456\",\r\n        \"abnormal_code\": 0\r\n      },\r\n      \"container_task\": \"task1\",\r\n      \"group_code\": \"G1\"\r\n    }\r\n  },\r\n  \"work_state\": \"running\",\r\n  \"zone\": \"A1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"process"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,8 @@
+server:
+  service:
+    - name: trpc.test.helloworld.DataService # 保持与服务接口一致
+      ip: ${SERVICE_IP}  # 使用环境变量，默认值为192.168.13.1
+      port: ${TRPC_PORT}  # 使用环境变量，默认值为9002
+      network: tcp  # 网络监听类型  tcp udp
+      protocol: trpc  # 应用层协议 trpc myhttp
+      timeout: 1000  # 请求最长处理时间 单位 毫秒
